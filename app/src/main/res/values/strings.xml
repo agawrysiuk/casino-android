@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CasinoAndroid</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- back4app -->
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">tV1xUMt6aEd1v5uxcytgDdeNtqnhQzcp1VELuHhU</string>
+    <string name="back4app_client_key">0jkOqjflWUgQa2KlPUxmNabD4AS7hOJMG6vmIIU9</string>
 </resources>
