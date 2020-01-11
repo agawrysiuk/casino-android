@@ -12,6 +12,7 @@ public class GameManagerImpl implements GameManager {
 
     private GameMap gameMap;
     private List<FloorTile> tiles;
+    private Random random;
 
     public GameManagerImpl() {
         this.tiles = new ArrayList<>();
@@ -57,7 +58,9 @@ public class GameManagerImpl implements GameManager {
         //  - yes -> end it;
         //  - no -> go to point 3
         //3. try to add a tile
-        Random random = new Random();
+        if (random == null) {
+            random = new Random();
+        }
         int i = 0;
         while (!gameMap.isFinished()) {
             i++;

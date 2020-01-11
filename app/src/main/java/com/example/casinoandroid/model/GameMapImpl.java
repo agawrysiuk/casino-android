@@ -45,7 +45,6 @@ public class GameMapImpl implements GameMap {
             //todo add here some check to the boolean field if it's true for a special tile needed
             //todo if true, we need to wait for this special tile
             //here is the code for the rest of the mapping
-//            log.info("Trying to find a filler tile.");
             if (fillerList.isEmpty()) {
                 //there is no more tiles with open exits
                 Log.i("INFO","No filler tile found. Map is completed.");
@@ -59,7 +58,6 @@ public class GameMapImpl implements GameMap {
                 //else, we rotate and try it again
                 //if it fits, we check the rules, add it and return true
                 //if it doesn't end after three tries, we return false;
-//                log.info("Checking for validity. Rotation = {}",rotated*90);
                 Exit exitToDelete = checkExits(newFloorTile, filler);
                 if (exitToDelete != null) {
 //                    log.info("exitToDelete = {}, not null. Checking other.",exitToDelete);

@@ -28,11 +28,6 @@ public class CreateMapFragment extends Fragment {
     public CreateMapFragment() {
         if (gameManager == null) {
             gameManager = new GameManagerImpl();
-            try {
-                gameManager.loadTiles();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         // Required empty public constructor
     }
@@ -46,6 +41,11 @@ public class CreateMapFragment extends Fragment {
         view.findViewById(R.id.btnCreateMap).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    gameManager.loadTiles();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 gameManager.createMap();
             }
         });
