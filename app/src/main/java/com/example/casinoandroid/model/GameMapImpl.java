@@ -77,7 +77,11 @@ public class GameMapImpl implements GameMap {
                     }
                     int x = filler.getCoordinates().getX();
                     int y = filler.getCoordinates().getY();
-                    gameMap[x][y] = newFloorTile;
+                    try {
+                        gameMap[x][y] = newFloorTile;
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        continue;
+                    }
                     newFloorTile.setCoordinates(x, y);
                     newFloorTile.setRotate(rotated*90);
                     fillerList.remove(0);

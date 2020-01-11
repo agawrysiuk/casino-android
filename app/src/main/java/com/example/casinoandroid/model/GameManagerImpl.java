@@ -116,4 +116,9 @@ public class GameManagerImpl implements GameManager {
     public List<FloorTile> getTiles() {
         return tiles;
     }
+
+    @Override
+    public GameMap getMap() {
+        return gameMap;
+    }
 }

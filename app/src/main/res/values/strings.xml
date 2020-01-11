@@ -12,4 +12,5 @@
     <string name="game_desc">Welcome to the app which creates random maps (mazes) for the board games.\n\nIt uses a couple of preconfigured tiles from the game Aliens vs Predator: The Hunt Begins, but you can use it for other games as well.\n\nThe tiles that are used in this game are:</string>
     <string name="learn_more_button">Learn about the Hunt Begins</string>
     <string name="create_map">Create Map</string>
+    <string name="save_map">Save Map</string>
 </resources>

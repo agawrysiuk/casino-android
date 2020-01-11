@@ -27,6 +27,7 @@ dependencies {
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.22.1" //for back4app
     implementation 'com.google.android.material:material:1.0.0' //for appbarlayout
     implementation 'com.otaliastudios:zoomlayout:1.7.0' //for ZoomLayout
+    implementation 'com.github.Shashank02051997:FancyToast-Android:0.1.6' //for FancyToast
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

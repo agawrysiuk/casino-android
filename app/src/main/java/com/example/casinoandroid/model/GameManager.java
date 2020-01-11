@@ -9,6 +9,8 @@ public interface GameManager {
 
     GameMap createMap();
 
+    GameMap getMap();
+
     List<FloorTile> getTiles();
 
     FloorTile getTile(int id);
