@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">CasinoAndroid</string>
+    <string name="app_name">Casino Android</string>
 
     <!-- back4app -->
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
     <string name="back4app_app_id">tV1xUMt6aEd1v5uxcytgDdeNtqnhQzcp1VELuHhU</string>
     <string name="back4app_client_key">0jkOqjflWUgQa2KlPUxmNabD4AS7hOJMG6vmIIU9</string>
+
+    <!-- app strings -->
+    <string name="main_title">AvP: The Hunt Begins</string>
+    <string name="side_title">Board Game Map Creator</string>
+    <string name="game_desc">Welcome to the app which creates random maps (mazes) for the board games.\n\nIt uses a couple of preconfigured tiles from the game Aliens vs Predator: The Hunt Begins, but you can use it for other games as well.\n\nThe tiles that are used in this game are:</string>
 </resources>

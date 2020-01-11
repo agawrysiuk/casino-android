@@ -22,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // == Sending installation information to the server ==
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
+        // == initialize tabs ==
         viewPager = findViewById(R.id.viewPager);
         tabAdapter = new TabAdapter(getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
