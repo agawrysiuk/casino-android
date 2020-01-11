@@ -5,11 +5,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.casinoandroid.R;
+import com.example.casinoandroid.model.GameManager;
+import com.example.casinoandroid.model.GameManagerImpl;
+
+import java.io.IOException;
 
 
 /**
@@ -17,8 +23,17 @@ import com.example.casinoandroid.R;
  */
 public class CreateMapFragment extends Fragment {
 
+    private GameManager gameManager;
 
     public CreateMapFragment() {
+        if (gameManager == null) {
+            gameManager = new GameManagerImpl();
+            try {
+                gameManager.loadTiles();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         // Required empty public constructor
     }
 
@@ -27,7 +42,14 @@ public class CreateMapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_map, container, false);
+        view.findViewById(R.id.btnCreateMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameManager.createMap();
+            }
+        });
+        return view;
     }
 
 }

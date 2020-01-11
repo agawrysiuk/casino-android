@@ -16,7 +16,7 @@ public final class Database {
         return new Database();
     }
 
-    public BufferedReader getData() throws FileNotFoundException {
+    public BufferedReader getData() {
         return
                 new BufferedReader(
                 new InputStreamReader(
