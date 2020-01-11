@@ -1,0 +1,90 @@
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+1,Straight Corridor,1,0,1,0,0.00
+15,L-Shape Tile_R,1,1,0,0,0.00
+15,L-Shape Tile_R,1,1,0,0,0.00
+15,L-Shape Tile_R,1,1,0,0,0.00
+15,L-Shape Tile_R,1,1,0,0,0.00
+16,L-Shape Tile_L,1,0,0,1,270.00
+16,L-Shape Tile_L,1,0,0,1,270.00
+16,L-Shape Tile_L,1,0,0,1,270.00
+16,L-Shape Tile_L,1,0,0,1,270.00
+23,T-Shape Tile_U,1,1,0,1,0.00
+23,T-Shape Tile_U,1,1,0,1,0.00
+23,T-Shape Tile_U,1,1,0,1,0.00
+23,T-Shape Tile_U,1,1,0,1,0.00
+24,T-Shape Tile_D,0,1,1,1,180.00
+24,T-Shape Tile_D,0,1,1,1,180.00
+24,T-Shape Tile_D,0,1,1,1,180.00
+24,T-Shape Tile_D,0,1,1,1,180.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+31,CrossRoad,1,1,1,1,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+43,Dead End,0,0,1,0,0.00
+55,Laboratory,0,0,1,0,0.00
+56,Armoury,0,0,1,0,0.00
+57,Bridge,0,0,1,0,0.00
+58,Hibernation Room,0,0,1,0,0.00
+59,Engine Room,0,0,1,0,0.00
