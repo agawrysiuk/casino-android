@@ -1,9 +1,11 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 import android.util.Log;
+
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class FloorTileImpl implements FloorTile {
+public class FloorTileImpl implements FloorTile, Serializable {
 
     private final int id;
     private final String name;

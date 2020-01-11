@@ -1,4 +1,4 @@
-package com.example.casinoandroid.fragment;
+package com.example.huntandroid.fragment;
 
 
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.casinoandroid.R;
+import com.example.huntandroid.R;
 
 
 /**

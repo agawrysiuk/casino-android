@@ -1,4 +1,4 @@
-package com.example.casinoandroid;
+package com.example.huntandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.casinoandroid.fragment.TabAdapter;
+import com.example.huntandroid.fragment.TabAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseInstallation;
 

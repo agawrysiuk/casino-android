@@ -1,11 +1,13 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 import android.util.Log;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GameMapImpl implements GameMap {
+public class GameMapImpl implements GameMap, Serializable {
     private FloorTile[][] gameMap;
     private List<FloorTile> fillerList;
     private boolean finished;
@@ -199,7 +201,7 @@ public class GameMapImpl implements GameMap {
     }
 
     //for testing purposes
-    public void printMap() {
+    public void printMapToConsole() {
         for(int i = 0; i<MAP_HEIGHT;i++) {
             for(int j = 0; j<MAP_WIDTH; j++) {
                 FloorTile floorTile = gameMap[i][j];

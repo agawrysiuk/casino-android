@@ -1,6 +1,8 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
-public enum Exit {
+import java.io.Serializable;
+
+public enum Exit implements Serializable {
     TOP_EXIT(0,-1,0),
     RIGHT_EXIT(1,0,1),
     BOT_EXIT(2,1,0),

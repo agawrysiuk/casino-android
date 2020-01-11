@@ -1,4 +1,4 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 public interface Coordinates {
 

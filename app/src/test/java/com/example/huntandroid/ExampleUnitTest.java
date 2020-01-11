@@ -1,4 +1,4 @@
-package com.example.casinoandroid;
+package com.example.huntandroid;
 
 import org.junit.Test;
 

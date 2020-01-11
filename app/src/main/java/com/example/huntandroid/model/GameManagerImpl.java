@@ -1,8 +1,8 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 import android.util.Log;
 
-import com.example.casinoandroid.data.Database;
+import com.example.huntandroid.data.Database;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,12 +98,12 @@ public class GameManagerImpl implements GameManager {
             } else {
                 tileToAdd.goBackToDefault();
             }
-            if(i==1000) { //we don't want it to take too long, so we break it early; if it doesn't finish by 1000 iterations, it won't at all
+            if(i>=1000) { //we don't want it to take too long, so we break it early; if it doesn't finish by 1000 iterations, it won't at all
                 break;
             }
         }
         Log.i("INFO","Map created.");
-        gameMap.printMap();
+//        gameMap.printMapToConsole();
         return gameMap;
     }
 

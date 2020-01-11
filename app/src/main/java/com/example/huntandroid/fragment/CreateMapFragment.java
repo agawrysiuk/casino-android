@@ -1,13 +1,10 @@
-package com.example.casinoandroid.fragment;
+package com.example.huntandroid.fragment;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +15,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.casinoandroid.R;
-import com.example.casinoandroid.data.Database;
-import com.example.casinoandroid.model.FloorTile;
-import com.example.casinoandroid.model.GameManager;
-import com.example.casinoandroid.model.GameManagerImpl;
-import com.example.casinoandroid.model.GameMap;
+import com.example.huntandroid.R;
+import com.example.huntandroid.data.Database;
+import com.example.huntandroid.model.FloorTile;
+import com.example.huntandroid.model.GameManager;
+import com.example.huntandroid.model.GameManagerImpl;
+import com.example.huntandroid.model.GameMap;
 import com.otaliastudios.zoom.ZoomLayout;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -31,6 +28,8 @@ import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -60,20 +59,7 @@ public class CreateMapFragment extends Fragment {
         btnSaveMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo implement saving
-//                final ParseObject mapToSend = new ParseObject("Map");
-//                mapToSend.put("map",gameManager.getMap());
-//                mapToSend.saveInBackground(new SaveCallback() {
-//                    @Override
-//                    public void done(ParseException e) {
-//                        if (e == null) {
-//                            FancyToast.makeText(getContext(),"Map saved successfully!", Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
-//                            btnSaveMap.setEnabled(false);
-//                        } else {
-//                            FancyToast.makeText(getContext(),"Oops! Map couldn't be saved!", Toast.LENGTH_SHORT,FancyToast.ERROR,false).show();
-//                        }
-//                    }
-//                });
+                sendMapToServer();
             }
         });
         btnCreateMap = view.findViewById(R.id.btnCreateMap);
@@ -91,6 +77,34 @@ public class CreateMapFragment extends Fragment {
         });
         zoomLayout = view.findViewById(R.id.zoomLayout);
         return view;
+    }
+
+    private void sendMapToServer() {
+        GameMap gameMap = gameManager.getMap();
+        if (gameMap != null) {
+            FloorTile[][] floorTiles = gameMap.getGameMap();
+            Map<String, String> mapToSend = new HashMap<>();
+            for (int i = 0; i < floorTiles.length; i++) {
+                for (int j = 0; j < floorTiles[i].length; j++) {
+                    String value = (floorTiles[i][j] == null)? null : floorTiles[i][j].getName();
+                    mapToSend.put(i + "" + j, value);
+                }
+            }
+
+            final ParseObject object = new ParseObject("Map");
+            object.put("map", mapToSend);
+            object.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        FancyToast.makeText(getContext(), "Map saved successfully!", Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
+                        btnSaveMap.setEnabled(false);
+                    } else {
+                        FancyToast.makeText(getContext(), "Oops! Map couldn't be saved!", Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+                    }
+                }
+            });
+        }
     }
 
     private void printMapOnTheLayout(GameMap gameMap) {

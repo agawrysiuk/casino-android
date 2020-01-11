@@ -1,7 +1,9 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 
-public class CoordinatesImpl implements Coordinates {
+import java.io.Serializable;
+
+public class CoordinatesImpl implements Coordinates, Serializable {
     private final int x;
     private final int y;
 

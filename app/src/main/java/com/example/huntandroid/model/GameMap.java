@@ -1,4 +1,4 @@
-package com.example.casinoandroid.model;
+package com.example.huntandroid.model;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface GameMap {
 
     boolean isFinished();
 
-    void printMap();
+    void printMapToConsole();
 }

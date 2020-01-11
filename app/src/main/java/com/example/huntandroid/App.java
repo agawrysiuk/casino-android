@@ -1,4 +1,4 @@
-package com.example.casinoandroid;
+package com.example.huntandroid;
 
 import android.app.Application;
 

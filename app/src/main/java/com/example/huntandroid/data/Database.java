@@ -1,13 +1,12 @@
-package com.example.casinoandroid.data;
+package com.example.huntandroid.data;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.example.casinoandroid.R;
+import com.example.huntandroid.R;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
 public final class Database {
