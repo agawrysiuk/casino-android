@@ -83,16 +83,21 @@ public class CreateMapFragment extends Fragment {
         GameMap gameMap = gameManager.getMap();
         if (gameMap != null) {
             FloorTile[][] floorTiles = gameMap.getGameMap();
-            Map<String, String> mapToSend = new HashMap<>();
+            Map<String, String> tilesToSend = new HashMap<>();
+            Map<String, Double> rotationToSend = new HashMap<>();
             for (int i = 0; i < floorTiles.length; i++) {
                 for (int j = 0; j < floorTiles[i].length; j++) {
-                    String value = (floorTiles[i][j] == null)? null : floorTiles[i][j].getName();
-                    mapToSend.put(i + "" + j, value);
+                    if(floorTiles[i][j] != null) {
+                        String keyMap = i + "" + j;
+                        tilesToSend.put(keyMap, floorTiles[i][j].getName());
+                        rotationToSend.put(keyMap,floorTiles[i][j].getRotate());
+                    }
                 }
             }
 
             final ParseObject object = new ParseObject("Map");
-            object.put("map", mapToSend);
+            object.put("tiles", tilesToSend);
+            object.put("rotation",rotationToSend);
             object.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
