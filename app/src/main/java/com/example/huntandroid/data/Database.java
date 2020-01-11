@@ -13,11 +13,16 @@ public final class Database {
 
     private static final String TILES_PATH = "res/raw/tiles.txt";
 
+    private static Database instance = null;
+
     private Database() {
     }
 
     public static Database getDatabase() {
-        return new Database();
+        if (instance == null) {
+            instance = new Database();
+        }
+        return instance;
     }
 
     public BufferedReader getData() {

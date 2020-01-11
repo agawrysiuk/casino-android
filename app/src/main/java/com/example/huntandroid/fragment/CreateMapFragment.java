@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.huntandroid.R;
 import com.example.huntandroid.data.Database;
+import com.example.huntandroid.data.Service;
 import com.example.huntandroid.model.FloorTile;
 import com.example.huntandroid.model.GameManager;
 import com.example.huntandroid.model.GameManagerImpl;
@@ -71,7 +72,9 @@ public class CreateMapFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                printMapOnTheLayout(gameManager.createMap());
+                zoomLayout.removeAllViews();
+                TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(),gameManager.createMap());
+                zoomLayout.addView(tableLayout);
                 btnSaveMap.setEnabled(true);
             }
         });
@@ -82,23 +85,7 @@ public class CreateMapFragment extends Fragment {
     private void sendMapToServer() {
         GameMap gameMap = gameManager.getMap();
         if (gameMap != null) {
-            FloorTile[][] floorTiles = gameMap.getGameMap();
-            Map<String, String> tilesToSend = new HashMap<>();
-            Map<String, Double> rotationToSend = new HashMap<>();
-            for (int i = 0; i < floorTiles.length; i++) {
-                for (int j = 0; j < floorTiles[i].length; j++) {
-                    if(floorTiles[i][j] != null) {
-                        String keyMap = i + "" + j;
-                        tilesToSend.put(keyMap, floorTiles[i][j].getName());
-                        rotationToSend.put(keyMap,floorTiles[i][j].getRotate());
-                    }
-                }
-            }
-
-            final ParseObject object = new ParseObject("Map");
-            object.put("tiles", tilesToSend);
-            object.put("rotation",rotationToSend);
-            object.saveInBackground(new SaveCallback() {
+            Service.getInstance().parseMapToObject(gameMap).saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
@@ -110,28 +97,6 @@ public class CreateMapFragment extends Fragment {
                 }
             });
         }
-    }
-
-    private void printMapOnTheLayout(GameMap gameMap) {
-        zoomLayout.removeAllViews();
-        TableLayout tableLayout = new TableLayout(getContext());
-        for(FloorTile[] row : gameMap.getGameMap()) {
-            TableRow tableRow = new TableRow(getContext());
-            for (FloorTile floorTile : row) {
-                if (floorTile == null){
-                    TextView textView = new TextView(getContext());
-                    textView.setText("");
-                    tableRow.addView(textView);
-                } else {
-                    ImageView imageView = new ImageView(getContext());
-                    imageView.setImageBitmap(Database.getDatabase().getImage(getContext(),floorTile.getName()));
-                    imageView.setRotation((float) floorTile.getRotate());
-                    tableRow.addView(imageView);
-                }
-            }
-            tableLayout.addView(tableRow);
-        }
-        zoomLayout.addView(tableLayout);
     }
 
 }

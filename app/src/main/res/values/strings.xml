@@ -13,4 +13,5 @@
     <string name="learn_more_button">Learn about the Hunt Begins</string>
     <string name="create_map">Create Map</string>
     <string name="save_map">Save Map</string>
+    <string name="btn_refresh">Refresh</string>
 </resources>
