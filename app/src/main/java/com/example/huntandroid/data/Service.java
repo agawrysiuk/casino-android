@@ -1,6 +1,8 @@
 package com.example.huntandroid.data;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -107,6 +109,17 @@ public class Service {
             gameMap.getGameMap()[i][y].setRotate(rotation);
         }
         return gameMap;
+    }
+
+    public ImageView createImageView(Context context, TableLayout tableLayout) {
+        tableLayout.measure(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
+        Bitmap b = Bitmap.createBitmap(tableLayout.getMeasuredWidth(), tableLayout.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        tableLayout.layout(0, 0, tableLayout.getMeasuredWidth(), tableLayout.getMeasuredHeight());
+        tableLayout.draw(c);
+        ImageView imageView = new ImageView(context);
+        imageView.setImageBitmap(b);
+        return imageView;
     }
 
     private class GameMapForPrinting implements GameMap {
