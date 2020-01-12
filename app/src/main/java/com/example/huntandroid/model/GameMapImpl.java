@@ -183,13 +183,6 @@ public class GameMapImpl implements GameMap, Serializable {
     }
 
     @Override
-    public boolean isValid() {
-        //1. all tiles need to be connected;
-        //2. tiles not connected can't be placed next to each other
-        return false;
-    }
-
-    @Override
     public boolean isFinished() {
         if (finished) {
             return true;
@@ -200,7 +193,7 @@ public class GameMapImpl implements GameMap, Serializable {
         return false;
     }
 
-    //for testing purposes
+    // == for testing purposes ==
     public void printMapToConsole() {
         for(int i = 0; i<MAP_HEIGHT;i++) {
             for(int j = 0; j<MAP_WIDTH; j++) {

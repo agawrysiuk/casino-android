@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.example.huntandroid.R;
 import com.example.huntandroid.data.Service;
@@ -19,9 +20,11 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
-import java.util.Map;
+
+import static com.example.huntandroid.data.Service.OBJECT_CLASSNAME;
 
 
 /**
@@ -51,15 +54,20 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("Map");
+        ParseQuery<ParseObject> queryAll = ParseQuery.getQuery(Service.OBJECT_CLASSNAME);
         queryAll.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if (objects.size() > 0 && e == null) {
                     for (ParseObject object : objects) {
                         GameMap gameMap = Service.getInstance().parseObjectToMap(object);
-                        TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(), gameMap);
-                        layoutForMaps.addView(tableLayout);
+                        if (gameMap != null) {
+                            gameMap.printMapToConsole();
+                            TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(), gameMap);
+                            layoutForMaps.addView(tableLayout);
+                        } else {
+                            FancyToast.makeText(getContext(), "Oops! We encountered some error!", Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+                        }
                     }
                 } else {
                     //kod jak jest błąd

@@ -9,8 +9,6 @@ public interface GameMap {
 
     boolean addFloorTile(FloorTile floorTile);
 
-    boolean isValid();
-
     boolean isFinished();
 
     void printMapToConsole();
