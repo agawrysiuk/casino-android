@@ -14,7 +14,6 @@ public class FloorTileImpl implements FloorTile, Serializable {
     private double rotate;
     private double rotateCopy;
     private Coordinates coordinates;
-    private String imgPath;
 
     public FloorTileImpl(int id, String name) {
         this.id = id;
@@ -140,15 +139,5 @@ public class FloorTileImpl implements FloorTile, Serializable {
     @Override
     public Coordinates getCoordinates() {
         return coordinates;
-    }
-
-    @Override
-    public String getImgPath() {
-        return imgPath;
-    }
-
-    @Override
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
     }
 }

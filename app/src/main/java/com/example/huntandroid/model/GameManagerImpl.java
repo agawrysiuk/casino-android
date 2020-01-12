@@ -107,16 +107,6 @@ public class GameManagerImpl implements GameManager {
         return gameMap;
     }
 
-    public FloorTile getTile(int id) {
-        return tiles.get(id);
-    }
-
-
-    @Override
-    public List<FloorTile> getTiles() {
-        return tiles;
-    }
-
     @Override
     public GameMap getMap() {
         return gameMap;

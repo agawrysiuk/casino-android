@@ -54,6 +54,7 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        layoutForMaps.removeAllViews();
         ParseQuery<ParseObject> queryAll = ParseQuery.getQuery(Service.OBJECT_CLASSNAME);
         queryAll.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -62,7 +63,6 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
                     for (ParseObject object : objects) {
                         GameMap gameMap = Service.getInstance().parseObjectToMap(object);
                         if (gameMap != null) {
-                            gameMap.printMapToConsole();
                             TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(), gameMap);
                             layoutForMaps.addView(tableLayout);
                         } else {

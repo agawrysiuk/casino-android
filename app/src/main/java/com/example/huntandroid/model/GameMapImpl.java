@@ -194,19 +194,19 @@ public class GameMapImpl implements GameMap, Serializable {
     }
 
     // == for testing purposes ==
-    public void printMapToConsole() {
-        for(int i = 0; i<MAP_HEIGHT;i++) {
-            for(int j = 0; j<MAP_WIDTH; j++) {
-                FloorTile floorTile = gameMap[i][j];
-                if(floorTile==null) {
-                    System.out.print("[  ]");
-                } else {
-                    System.out.print("[" + String.format("%02d", floorTile.getId())+"]");
-                }
-            }
-            System.out.print("\n");
-        }
-    }
+//    public void printMapToConsole() {
+//        for(int i = 0; i<MAP_HEIGHT;i++) {
+//            for(int j = 0; j<MAP_WIDTH; j++) {
+//                FloorTile floorTile = gameMap[i][j];
+//                if(floorTile==null) {
+//                    System.out.print("[  ]");
+//                } else {
+//                    System.out.print("[" + String.format("%02d", floorTile.getId())+"]");
+//                }
+//            }
+//            System.out.print("\n");
+//        }
+//    }
 
 
     @Override

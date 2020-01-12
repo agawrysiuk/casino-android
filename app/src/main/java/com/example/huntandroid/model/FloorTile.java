@@ -25,8 +25,4 @@ public interface FloorTile {
     Coordinates getCoordinates();
 
     void goBackToDefault();
-
-    void setImgPath(String imgPath);
-
-    String getImgPath();
 }
