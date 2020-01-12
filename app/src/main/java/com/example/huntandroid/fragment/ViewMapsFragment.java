@@ -53,7 +53,6 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
         btnRefresh = view.findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(this);
         layoutForMaps = view.findViewById(R.id.layoutForMaps);
-        onClick(view);
         return view;
     }
 
@@ -76,7 +75,7 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 } else {
-                    //kod jak jest błąd
+                    FancyToast.makeText(getContext(), "No maps to download", Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
                 }
             }
         });

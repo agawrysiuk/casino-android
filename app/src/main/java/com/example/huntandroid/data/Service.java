@@ -42,6 +42,9 @@ public class Service {
     public TableLayout printMapOnTheLayout(Context context, GameMap gameMap) {
         TableLayout tableLayout = new TableLayout(context);
         for (FloorTile[] row : gameMap.getGameMap()) {
+            if (isRowEmpty(row)) {
+                continue;
+            }
             TableRow tableRow = new TableRow(context);
             for (FloorTile floorTile : row) {
                 if (floorTile == null) {
@@ -60,6 +63,15 @@ public class Service {
         return tableLayout;
     }
 
+    private boolean isRowEmpty(Object[] objects) {
+        for (Object object : objects) {
+            if (object != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public ParseObject parseMapToObject(GameMap gameMap) {
         // == transform map ==
         FloorTile[][] floorTiles = gameMap.getGameMap();
@@ -74,7 +86,6 @@ public class Service {
                 }
             }
         }
-
         // == get parseobject ==
         final ParseObject object = new ParseObject(OBJECT_CLASSNAME);
         object.put(OBJECT_TILES, tilesToSend);
