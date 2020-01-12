@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Service {
+    private static final String SEPARATOR = "/";
     private static Service instance = null;
 
     private Service() {
@@ -56,7 +57,7 @@ public class Service {
         for (int i = 0; i < floorTiles.length; i++) {
             for (int j = 0; j < floorTiles[i].length; j++) {
                 if(floorTiles[i][j] != null) {
-                    String keyMap = i + "" + j;
+                    String keyMap = i + SEPARATOR + j;
                     tilesToSend.put(keyMap, floorTiles[i][j].getName());
                     rotationToSend.put(keyMap,floorTiles[i][j].getRotate());
                 }
@@ -70,8 +71,10 @@ public class Service {
         return object;
     }
 
-    public GameMap parseObjectToMap(ParseObject parseObject) {
+    public GameMap parseObjectToMap(ParseObject object) {
         //todo implement parsing object
+        Map<String, String> tilesReceived = (Map<String, String>) object.get("tiles");
+        Map<String, Double> rotationReceived = (Map<String, Double>) object.get("rotation");
         GameMap gameMap = new GameMapImpl();
         return new GameMapImpl();
     }

@@ -10,14 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 
 import com.example.huntandroid.R;
+import com.example.huntandroid.data.Service;
+import com.example.huntandroid.model.GameMap;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,9 +57,9 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (objects.size() > 0 && e == null) {
                     for (ParseObject object : objects) {
-                        Map<String, String> tilesReceived = (Map<String, String>) object.get("tiles");
-                        Map<String, Double> rotationReceived = (Map<String, Double>) object.get("rotation");
-
+                        GameMap gameMap = Service.getInstance().parseObjectToMap(object);
+                        TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(), gameMap);
+                        layoutForMaps.addView(tableLayout);
                     }
                 } else {
                     //kod jak jest błąd

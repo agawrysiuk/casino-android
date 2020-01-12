@@ -9,28 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.huntandroid.R;
-import com.example.huntandroid.data.Database;
 import com.example.huntandroid.data.Service;
-import com.example.huntandroid.model.FloorTile;
 import com.example.huntandroid.model.GameManager;
 import com.example.huntandroid.model.GameManagerImpl;
 import com.example.huntandroid.model.GameMap;
 import com.otaliastudios.zoom.ZoomLayout;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
