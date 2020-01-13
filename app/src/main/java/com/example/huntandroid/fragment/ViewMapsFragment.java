@@ -17,13 +17,10 @@ import android.widget.Toast;
 import com.example.huntandroid.R;
 import com.example.huntandroid.data.Service;
 import com.example.huntandroid.model.GameMap;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
-import java.util.List;
+import java.util.Date;
+import java.util.Map;
 
 
 /**
@@ -53,25 +50,15 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         layoutForMaps.removeAllViews();
-        ParseQuery<ParseObject> queryAll = ParseQuery.getQuery(Service.OBJECT_CLASSNAME);
-        queryAll.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (objects.size() > 0 && e == null) {
-                    for (ParseObject object : objects) {
-                        GameMap gameMap = Service.getInstance().parseObjectToMap(object);
-                        if (gameMap != null) {
-                            TableLayout tableLayout = Service.getInstance().printMapOnTheTableLayout(getContext(), gameMap);
-                            ImageView imageView = Service.getInstance().createImageViewOutOfTableLayout(getContext(),tableLayout);
-                            layoutForMaps.addView(imageView);
-                        } else {
-                            FancyToast.makeText(getContext(), "Oops! We encountered some error!", Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
-                        }
-                    }
-                } else {
-                    FancyToast.makeText(getContext(), "No maps to download", Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
-                }
+        Map<Date, GameMap> maps = Service.getInstance().getMapsFromTheServer();
+        for (GameMap map : maps.values()) {
+            if (map != null) {
+                TableLayout tableLayout = Service.getInstance().printMapOnTheTableLayout(getContext(), map);
+                ImageView imageView = Service.getInstance().createImageViewOutOfTableLayout(getContext(),tableLayout);
+                layoutForMaps.addView(imageView);
+            } else {
+                FancyToast.makeText(getContext(), "Oops! We encountered some error!", Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
             }
-        });
+        }
     }
 }

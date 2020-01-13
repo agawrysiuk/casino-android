@@ -3,21 +3,29 @@ package com.example.huntandroid.data;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import android.widget.Toast;
 
 import com.example.huntandroid.model.FloorTile;
 import com.example.huntandroid.model.FloorTileImpl;
 import com.example.huntandroid.model.GameMap;
-import com.example.huntandroid.model.GameMapImpl;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Service {
@@ -27,7 +35,9 @@ public class Service {
     private static final String OBJECT_ROTATION = "rotation";
     private static final String OBJECT_WIDTH = "width";
     private static final String OBJECT_HEIGHT = "height";
+    private static final String OBJECT_DATE_ID = "dateId";
     private static Service instance = null;
+    private static Map<Date,GameMap> maps;
 
     private Service() {
     }
@@ -35,6 +45,7 @@ public class Service {
     public static Service getInstance() {
         if (instance == null) {
             instance = new Service();
+            maps = new HashMap<>();
         }
         return instance;
     }
@@ -92,6 +103,7 @@ public class Service {
         object.put(OBJECT_ROTATION, rotationToSend);
         object.put(OBJECT_WIDTH, floorTiles[0].length);
         object.put(OBJECT_HEIGHT, floorTiles.length);
+        object.put(OBJECT_DATE_ID,new Date(System.currentTimeMillis()));
         return object;
     }
 
@@ -133,15 +145,34 @@ public class Service {
         return imageView;
     }
 
+    public Map<Date, GameMap> getMapsFromTheServer() {
+        ParseQuery<ParseObject> queryAll = ParseQuery.getQuery(Service.OBJECT_CLASSNAME);
+        if(!maps.isEmpty()) {
+            Date latest = Collections.max(maps.keySet());
+            queryAll.whereGreaterThan(OBJECT_DATE_ID, latest);
+        }
+        try {
+            List<ParseObject> objects = queryAll.find();
+            for (ParseObject object : objects) {
+                Log.i("MAP", "Map with the date id " + object.getDate(OBJECT_DATE_ID) + " downloaded.");
+                GameMap gameMap = parseObjectToMap(object);
+                maps.put(object.getDate("dateId"), gameMap);
+            }
+        } catch (ParseException e) {
+            return null;
+        }
+        return maps;
+    }
+
+    public Map<Date, GameMap> getMapsToPrint() {
+        return maps;
+    }
+
     private class GameMapForPrinting implements GameMap {
 
         private FloorTile[][] floorTiles;
-        private final int MAP_WIDTH;
-        private final int MAP_HEIGHT;
 
         public GameMapForPrinting(int MAP_WIDTH, int MAP_HEIGHT) {
-            this.MAP_WIDTH = MAP_WIDTH;
-            this.MAP_HEIGHT = MAP_HEIGHT;
             this.floorTiles = new FloorTile[MAP_HEIGHT][MAP_WIDTH];
         }
 
@@ -166,6 +197,5 @@ public class Service {
         }
 
     }
-
 
 }
