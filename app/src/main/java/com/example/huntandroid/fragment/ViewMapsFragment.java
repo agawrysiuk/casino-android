@@ -1,14 +1,10 @@
 package com.example.huntandroid.fragment;
 
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +24,6 @@ import com.parse.ParseQuery;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
-
-import static com.example.huntandroid.data.Service.OBJECT_CLASSNAME;
 
 
 /**
@@ -67,8 +61,8 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
                     for (ParseObject object : objects) {
                         GameMap gameMap = Service.getInstance().parseObjectToMap(object);
                         if (gameMap != null) {
-                            TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(), gameMap);
-                            ImageView imageView = Service.getInstance().createImageView(getContext(),tableLayout);
+                            TableLayout tableLayout = Service.getInstance().printMapOnTheTableLayout(getContext(), gameMap);
+                            ImageView imageView = Service.getInstance().createImageViewOutOfTableLayout(getContext(),tableLayout);
                             layoutForMaps.addView(imageView);
                         } else {
                             FancyToast.makeText(getContext(), "Oops! We encountered some error!", Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();

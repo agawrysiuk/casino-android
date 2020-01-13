@@ -39,7 +39,7 @@ public class Service {
         return instance;
     }
 
-    public TableLayout printMapOnTheLayout(Context context, GameMap gameMap) {
+    public TableLayout printMapOnTheTableLayout(Context context, GameMap gameMap) {
         TableLayout tableLayout = new TableLayout(context);
         for (FloorTile[] row : gameMap.getGameMap()) {
             if (isRowEmpty(row)) {
@@ -122,7 +122,7 @@ public class Service {
         return gameMap;
     }
 
-    public ImageView createImageView(Context context, TableLayout tableLayout) {
+    public ImageView createImageViewOutOfTableLayout(Context context, TableLayout tableLayout) {
         tableLayout.measure(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
         Bitmap b = Bitmap.createBitmap(tableLayout.getMeasuredWidth(), tableLayout.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);

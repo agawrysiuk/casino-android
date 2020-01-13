@@ -65,7 +65,7 @@ public class CreateMapFragment extends Fragment {
                     e.printStackTrace();
                 }
                 zoomLayout.removeAllViews();
-                TableLayout tableLayout = Service.getInstance().printMapOnTheLayout(getContext(),gameManager.createMap());
+                TableLayout tableLayout = Service.getInstance().printMapOnTheTableLayout(getContext(),gameManager.createMap());
                 zoomLayout.addView(tableLayout);
                 btnSaveMap.setEnabled(true);
             }
