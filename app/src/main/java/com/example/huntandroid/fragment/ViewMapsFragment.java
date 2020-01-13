@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewMapsFragment extends Fragment implements View.OnClickListener {
+public class ViewMapsFragment extends Fragment{
 
     private LinearLayout layoutForMaps;
     private Button btnRefresh;
@@ -42,15 +42,19 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view_maps, container, false);
         btnRefresh = view.findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(this);
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printMaps(Service.getInstance().getMapsFromTheServer());
+            }
+        });
         layoutForMaps = view.findViewById(R.id.layoutForMaps);
+        printMaps(Service.getInstance().getMapsToPrint());
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
+    private void printMaps(Map<Date, GameMap> maps) {
         layoutForMaps.removeAllViews();
-        Map<Date, GameMap> maps = Service.getInstance().getMapsFromTheServer();
         for (GameMap map : maps.values()) {
             if (map != null) {
                 TableLayout tableLayout = Service.getInstance().printMapOnTheTableLayout(getContext(), map);
@@ -61,4 +65,6 @@ public class ViewMapsFragment extends Fragment implements View.OnClickListener {
             }
         }
     }
+
+
 }

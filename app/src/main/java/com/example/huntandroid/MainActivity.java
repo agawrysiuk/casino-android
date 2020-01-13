@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.huntandroid.data.Service;
 import com.example.huntandroid.fragment.TabAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseInstallation;
@@ -23,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         // == Sending installation information to the server ==
         ParseInstallation.getCurrentInstallation().saveInBackground();
+
+        // == Getting first chunk of maps ==
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Service.getInstance().getMapsFromTheServer();
+            }
+        }).start();
 
         // == initialize tabs ==
         viewPager = findViewById(R.id.viewPager);
